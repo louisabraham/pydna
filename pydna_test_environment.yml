@@ -27,3 +27,4 @@ dependencies:
 - requests-mock
 
 - setuptools
+- python=3.10
