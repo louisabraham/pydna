@@ -1,4 +1,11 @@
-jobs:
+name: microconda
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*'
+
   test:
     runs-on: ubuntu-latest
     steps:
