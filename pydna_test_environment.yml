@@ -6,25 +6,4 @@ channels:
 
 dependencies:
 
-- appdirs
-- biopython
-- prettytable
-- networkx
-
-- pyparsing
-- CAI
-- requests
-- numpy
-- scipy
-- matplotlib
-
-- pytest
-- pytest-cov
-- pytest-mock
-- pytest-doctestplus
-- coverage
-- nbval
-- requests-mock
-
-- setuptools
-- python=3.10
+- biopython=1.80
