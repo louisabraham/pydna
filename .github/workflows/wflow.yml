@@ -1,22 +1,49 @@
-name: microconda
+name: Tests & Coverage
 on:
   push:
     branches:
       - '**'
     tags-ignore:
       - '*.*'
-
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build:
+    name: Test (${{ matrix.python-version }}, ${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ 'macos-latest', 'windows-latest' ]
+        python-version: ["3.10", "3.9", "3.8", "3.7"]
+        include:
+        - os: ubuntu-latest
+          python-version: "3.7"
+        - os: ubuntu-latest
+          python-version: "3.8"
+          codecov: true
+        - os: ubuntu-latest
+          python-version: "3.9"
+        - os: ubuntu-latest
+          python-version: "3.10"
+
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Install Conda environment from environment.yml
+      - name: Cache conda
+        uses: actions/cache@v3
+        with:
+          path: ~/conda_pkgs_dir
+          key: conda-${{ matrix.os }}-python-${{ matrix.python-version }}-${{ hashFiles('environment-ci.yml') }}
+
+      - name: Install conda environment from pydna_test_environment.yml
         uses: mamba-org/provision-with-micromamba@main
+        with:
+          environment-file: pydna_test_environment.yml
 
-      # Linux and macOS
-      - name: Run Python
+      - name: micromamba info
         shell: bash -l {0}
-        run: |
-          python -c "import Bio;print(Bio.__version__)"
+        run: micromamba info
+
+      - name: micromamba list
+        shell: bash -l {0}
+        run: micromamba list
