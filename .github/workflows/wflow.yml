@@ -19,4 +19,4 @@ jobs:
       - name: Run Python
         shell: bash -l {0}
         run: |
-          python -c "import numpy"
+          python -c "import Bio;print(Bio.__version__)"
