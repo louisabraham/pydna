@@ -1,0 +1,9 @@
+name: pydna_test_environment
+channels:
+- conda-forge
+- defaults
+- BjornFJohansson
+
+dependencies:
+
+- biopython=1.80
