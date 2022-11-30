@@ -47,3 +47,21 @@ jobs:
       - name: micromamba list
         shell: bash -l {0}
         run: micromamba list
+
+      - name: Install from source
+        shell: bash -l {0}
+        run: pip install --editable . --no-deps
+
+      - name: python run_test.py
+        shell: bash -l {0}
+        run: python run_test.py
+
+      - name: Upload coverage to Codecov
+        if: (matrix.codecov)
+        uses: codecov/codecov-action@v1.0.13
+        with:
+          file: ./coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: OS,PYTHON
+          name: codecov-umbrella
+          fail_ci_if_error: true
