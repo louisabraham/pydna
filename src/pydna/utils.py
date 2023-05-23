@@ -28,6 +28,7 @@ import itertools
 import math
 import random
 import subprocess as _subprocess
+from pydivsufsort import min_rotation
 
 from pydna.codon import weights as _weights
 from pydna.codon import rare_codons as _rare_codons
@@ -68,7 +69,7 @@ def shift_location(original_location, shift, lim):
     return newloc
 
 
-def smallest_rotation(s):
+def smallest_rotation_old(s):
     """Smallest rotation of a string.
 
     Algorithm described in Pierre Duval, Jean. 1983. Factorizing Words
@@ -107,6 +108,11 @@ def smallest_rotation(s):
                 prev, rep = w, 1
             if len(w) * rep == lens:
                 return "".join(w * rep)
+
+
+def smallest_rotation(s):
+    k = min_rotation(s)
+    return s[k:] + s[:k]
 
 
 def cai(seq: str, organism: str = "sce", weights: dict = _weights):
