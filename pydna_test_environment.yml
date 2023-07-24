@@ -1,35 +1,33 @@
 name: pydna_test_environment
 channels:
-- conda-forge
-- defaults
-- BjornFJohansson
+  - conda-forge
+  - defaults
+  - BjornFJohansson
 
 dependencies:
+  - appdirs
+  - biopython=1.80
+  - prettytable
+  - networkx
+  - pyqt
+  - pyfiglet
 
-- appdirs
-- biopython=1.80
-- prettytable
-- networkx
-- pyperclip
-- pyqt
-- pyfiglet
+  - pyparsing
+  - CAI
+  - requests
+  - numpy
+  - scipy
+  - matplotlib
 
-- pyparsing
-- CAI
-- requests
-- numpy
-- scipy
-- matplotlib
+  - pytest
+  - pytest-cov
+  - pytest-mock
+  - pytest-doctestplus
+  - pytest-profiling
+  - coverage
+  - nbval
+  - requests-mock
 
-- pytest
-- pytest-cov
-- pytest-mock
-- pytest-doctestplus
-- pytest-profiling
-- coverage
-- nbval
-- requests-mock
-
-- poetry
-- pip:
-    - poetry-dynamic-versioning
+  - poetry
+  - pip:
+      - poetry-dynamic-versioning

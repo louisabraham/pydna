@@ -20,7 +20,6 @@ requirements:
     - biopython>=1.80,<2.0
     - networkx>=2.8.8,<3.0.0
     - prettytable>=3.5.0,<4.0.0
-    - pyperclip>=1.8.2,<2.0.0
     - pyfiglet>=0.8.post1,<0.9
     - pyparsing>=2.4.7    # optional
     - requests>=2.26.0    # optional

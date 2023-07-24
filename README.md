@@ -182,7 +182,6 @@ Biopython has c-extensions, but the other modules are pure python.
 - [biopython >= 1.80](http://pypi.python.org/pypi/biopython)
 - [networkx >=2.8.8](http://pypi.python.org/pypi/networkx)
 - [prettytable >=3.5.0](https://pypi.python.org/pypi/PrettyTable)
-- [pyperclip >=1.8.2](https://pypi.python.org/pypi/PrettyTable)
 - [pyfiglet >=0.8.post1](https://pypi.python.org/pypi/PrettyTable)
 
 
