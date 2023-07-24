@@ -1,0 +1,21 @@
+name: "Aggregation"
+
+on: [push]
+
+env:
+    ARTIFACT: artifact.bin
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-python@v4
+              with:
+                  python-version: "3.10"
+            - run: python -m build
+
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: pydna-${{ github.sha }}.whl
+                  path: dist/pydna-*.whl
