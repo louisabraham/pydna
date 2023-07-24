@@ -1,9 +1,6 @@
-name: "Aggregation"
+name: "Wheels"
 
 on: [push]
-
-env:
-    ARTIFACT: artifact.bin
 
 jobs:
     build:
