@@ -11,29 +11,30 @@ Seq and SeqRecord classes, respectively.
 
 The Dseq and Dseqrecord classes support the notion of circular and linear DNA topology.
 """
-from Bio.Restriction import RestrictionBatch as _RestrictionBatch
-from Bio.Restriction import CommOnly
-from pydna.dseq import Dseq as _Dseq
-from pydna._pretty import pretty_str as _pretty_str
-from pydna.utils import flatten as _flatten
-from pydna.utils import memorize as _memorize
-from pydna.utils import rc as _rc
-from pydna.utils import shift_location as _shift_location
-from pydna.common_sub_strings import common_sub_strings as _common_sub_strings
-from Bio.SeqFeature import SeqFeature as _SeqFeature
-from Bio import SeqIO
-from Bio.SeqFeature import CompoundLocation as _CompoundLocation
-from Bio.SeqFeature import SimpleLocation as _SimpleLocation
-from pydna.seqrecord import SeqRecord as _SeqRecord
-from Bio.Seq import translate as _translate
-from pydna.utils import identifier_from_string as _identifier_from_string
 import copy as _copy
+import datetime as _datetime
 import operator as _operator
 import os as _os
 import re as _re
 import time as _time
-import datetime as _datetime
-import pyperclip
+
+from Bio import SeqIO
+from Bio.Restriction import CommOnly
+from Bio.Restriction import RestrictionBatch as _RestrictionBatch
+from Bio.Seq import translate as _translate
+from Bio.SeqFeature import CompoundLocation as _CompoundLocation
+from Bio.SeqFeature import SeqFeature as _SeqFeature
+from Bio.SeqFeature import SimpleLocation as _SimpleLocation
+
+from pydna._pretty import pretty_str as _pretty_str
+from pydna.common_sub_strings import common_sub_strings as _common_sub_strings
+from pydna.dseq import Dseq as _Dseq
+from pydna.seqrecord import SeqRecord as _SeqRecord
+from pydna.utils import flatten as _flatten
+from pydna.utils import identifier_from_string as _identifier_from_string
+from pydna.utils import memorize as _memorize
+from pydna.utils import rc as _rc
+from pydna.utils import shift_location as _shift_location
 
 try:
     from IPython.display import display_html as _display_html
@@ -475,6 +476,7 @@ class Dseqrecord(_SeqRecord):
 
         """
         import warnings as _warnings
+
         from pydna import _PydnaDeprecationWarning
 
         _warnings.warn(
@@ -1161,21 +1163,6 @@ class Dseqrecord(_SeqRecord):
     def orfs(self, minsize=30):
         """docstring."""
         return tuple(Dseqrecord(s) for s in self.seq.orfs(minsize=minsize))
-
-    def _copy_to_clipboard(self, sequence_format):
-        """docstring."""
-        pyperclip.copy(self.format(sequence_format))
-        return None
-
-    def copy_gb_to_clipboard(self):
-        """docstring."""
-        self._copy_to_clipboard("gb")
-        return None
-
-    def copy_fasta_to_clipboard(self):
-        """docstring."""
-        self._copy_to_clipboard("fasta")
-        return None
 
     def figure(self, feature=0, highlight="\x1b[48;5;11m", plain="\x1b[0m"):
         """docstring."""

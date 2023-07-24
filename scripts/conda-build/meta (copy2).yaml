@@ -21,7 +21,6 @@ requirements:
     - biopython>=1.80
     - networkx>=2.6.3
     - prettytable>=3.2.0  # todo replace with tabulate at some point ?
-    - pyperclip>=1.8.2
     - pyfiglet>=0.8.post1
 
     - pyparsing>=2.4.7    # optional
